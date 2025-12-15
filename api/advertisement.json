@@ -1,0 +1,26 @@
+{
+  "id": 807,
+  "code": "271024",
+  "name": "test",
+  "main_image": "https://backend.seed.moltaqadev.com//storage/238/1000000079_compressed.jpg",
+  "category": "المقاولات",
+  "is_online": 0,
+  "url": null,
+  "city": "الجوف",
+  "franchise_cities": [
+    {
+      "id": 36,
+      "name": "القصيم"
+    }
+  ],
+  "franchise_fees": "10000",
+  "management_franchise_fee_ratio": "3",
+  "complete_sell": 1,
+  "ask_money": 100000,
+  "partnership_ratio": null,
+  "total_project_evaluation": 100000,
+  "status": "published",
+  "created_at": "2025-07-07 11:59:58",
+  "published_at": "2025-07-08",
+  "is_mine": false
+}

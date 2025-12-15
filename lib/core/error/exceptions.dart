@@ -1,0 +1,9 @@
+class OfflineException implements Exception {}
+
+class NetworkException implements Exception {}
+
+class ServerException implements Exception {}
+
+class UnAuthorizedException implements Exception {}
+
+class EmptyCacheException implements Exception {}

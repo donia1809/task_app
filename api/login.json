@@ -1,0 +1,15 @@
+{
+  "data": {
+    "verification_code": "1111",
+    "access_token": "454|FjgL7Geebxbd8CUwpDXYypIryVhmlimn4nrxYjzm850e3efc",
+    "user": {
+      "id": 2,
+      "name": "client",
+      "email": "encryptedUser@seed.com",
+      "mobile": "0512345678",
+      "image": "https://backend.seed.moltaqadev.com/assets/avatar.png",
+      "is_verified": false
+    }
+  },
+  "status": 200
+}
