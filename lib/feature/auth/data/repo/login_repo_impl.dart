@@ -8,8 +8,7 @@ import '../../domain/repo/login_repo.dart';
 import '../data_source/login_local_data_source.dart';
 import '../data_source/login_remote_data_source.dart';
 
-class LogInRepoImpl extends LogInRepo
-{
+class LogInRepoImpl extends LogInRepo {
   //object from data source
   final LogInRemoteDataSource logInRemoteDataSource;
   final LogInLocalDataSource logInLocalDataSource;
@@ -20,30 +19,32 @@ class LogInRepoImpl extends LogInRepo
     required this.logInLocalDataSource,
     required this.networkInfo,
   });
-//login from api
+  //login from api
   @override
   Future<Either<Failure, LogInEntity>> logInWithMobile(String mobile) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remoteUser =
-        await logInRemoteDataSource.logInWithMobile(mobile);
-
-        await logInLocalDataSource.cacheUser(remoteUser);
-        return Right(remoteUser);
-      } on UnAuthorizedException {
-        return Left(UnAuthorizedFailure());
-      } on ServerException {
-        return Left(ServerFailure());
-      } on NetworkException {
-        return Left(NetworkFailure());
-      }
+    if (!await networkInfo.isConnected) {
+      return Left(OfflineFailure());
     }
-    else {
+
+    try {
+      final remoteUser = await logInRemoteDataSource.logInWithMobile(mobile);
+
+      await logInLocalDataSource.cacheUser(remoteUser);
+      return Right(remoteUser);
+    } on ValidationException {
+      return Left(ValidationFailure());
+    } on UnAuthorizedException {
+      return Left(UnAuthorizedFailure());
+    } on NetworkException {
       return Left(NetworkFailure());
+    } on ServerException {
+      return Left(ServerFailure());
+    } catch (_) {
+      return Left(ServerFailure());
     }
   }
 
-//auto login
+  //auto login
   @override
   Future<Either<Failure, LogInEntity>> getCachedUser() async {
     try {
@@ -51,6 +52,8 @@ class LogInRepoImpl extends LogInRepo
       return Right(localUser);
     } on EmptyCacheException {
       return Left(EmptyCacheFailure());
+    } catch (_) {
+      return Left(ServerFailure());
     }
   }
 }
