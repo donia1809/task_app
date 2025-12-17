@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:task_app/feature/auth/data/models/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../../core/error/exceptions.dart';
 
 abstract class LogInLocalDataSource

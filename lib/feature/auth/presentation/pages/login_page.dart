@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:task_app/feature/auth/presentation/bloc/login_bloc.dart';
 import 'package:task_app/feature/auth/presentation/pages/otp_page.dart';
 import '../../../../core/common_widget/auth_bg.dart';

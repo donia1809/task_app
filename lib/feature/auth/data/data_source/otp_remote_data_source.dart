@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as client;
-
 import '../../../../../core/utils/handle_response.dart';
 import '../../../../core/network/api_constants.dart';
 import '../../../../core/network/api_headers.dart';
@@ -20,7 +19,7 @@ class OtpRemoteDataSourceImpl implements OtpRemoteDataSource {
   @override
   Future<OtpModel> verifyOtp(String otp, String token) async {
     final response = await client.post(
-      Uri.parse('${ApiConstants.baseUrl}/verify-otp'),
+      Uri.parse('${ApiConstants.baseUrl}/client-api/v1/auth/verify-otp'),
       headers: authHeaders(token),
       body: json.encode({"code": otp}),
     );

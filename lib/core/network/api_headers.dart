@@ -5,6 +5,7 @@ Map<String, String> defaultHeaders() => {
   "Api-Version": ApiConstants.apiVersion,
   "Accept-Language": "ar",
   "Content-Type": "application/json",
+  "Accept": "application/json",
 };
 
 Map<String, String> authHeaders(String token) => {

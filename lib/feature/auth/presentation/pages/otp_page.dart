@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_app/feature/auth/presentation/bloc/otp_bloc.dart';
 import 'package:task_app/feature/auth/presentation/widget/otp_container.dart';
-import 'package:task_app/feature/home_screen.dart';
+import 'package:task_app/feature/screens/pages/home.dart';
 import '../../../../core/common_widget/auth_bg.dart';
 import '../../../../core/theme/colors.dart';
 import '../../../../core/utils/snack_bar_message.dart';
-import '../bloc/login_bloc.dart';
-import '../widget/auth_container.dart';
+
 
 class OtpPage extends StatelessWidget {
   static const String routeName = 'otp Page';

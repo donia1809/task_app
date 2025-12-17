@@ -7,7 +7,7 @@ import '../../domain/repo/otp_repo.dart';
 import '../data_source/otp_local_data_source.dart';
 import '../data_source/otp_remote_data_source.dart';
 
-class OtpRepoImpl extends OtpRepo {
+class OtpRepoImpl implements OtpRepo {
   final OtpRemoteDataSource otpRemoteDataSource;
   final OtpLocalDataSource otpLocalDataSource;
   final NetworkInfo networkInfo;
@@ -39,16 +39,9 @@ class OtpRepoImpl extends OtpRepo {
     }
   }
 
-  Future<Either<Failure, Map<String, String>>> getCachedOtp() async {
-    try {
-      final data = await otpLocalDataSource.getCachedOtp();
-      return Right(data);
-    } on EmptyCacheException {
-      return Left(EmptyCacheFailure());
-    }
-  }
-
-  Future<void> clearCachedOtp() async {
+  @override
+  Future<void> clearOtp() async{
     await otpLocalDataSource.clearOtp();
   }
+
 }

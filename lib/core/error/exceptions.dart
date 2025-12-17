@@ -9,3 +9,7 @@ class UnAuthorizedException implements Exception {}
 class EmptyCacheException implements Exception {}
 
 class ValidationException implements Exception {}
+
+class AdvertisementException implements Exception {}
+
+class UnexpectedException implements Exception {}

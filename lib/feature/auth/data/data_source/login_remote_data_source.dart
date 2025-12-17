@@ -17,10 +17,8 @@ class LogInRemoteDataSourceImpl implements LogInRemoteDataSource {
 
   @override
   Future<LogInModel> logInWithMobile(String mobile) async {
-    log('1');
-    print('................................................');
     final response = await client.post(
-      Uri.parse('${ApiConstants.baseUrl}/login'),
+      Uri.parse('${ApiConstants.baseUrl}/client-api/v1/auth/login'),
       headers: defaultHeaders(),
       body: json.encode({"mobile": mobile}),
     );

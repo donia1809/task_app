@@ -13,6 +13,8 @@ class ResponseHandler {
       return json.decode(response.body);
     } else if (response.statusCode == 401) {
       throw UnAuthorizedException();
+    }else if (response.statusCode == 404) {
+      throw AdvertisementException();
     } else if (response.statusCode == 422) {
       throw ValidationException();
     } else if (response.statusCode >= 500) {

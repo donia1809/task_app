@@ -13,13 +13,3 @@ class LogInWithMobileUseCase{
     return await loginRepo.logInWithMobile(mobile);
   }
 }
-
-class GetCachedUserUseCase {
-  final LogInRepo loginRepo;
-
-  GetCachedUserUseCase(this.loginRepo);
-
-  Future<Either<Failure, LogInEntity>> call() async {
-    return await loginRepo.getCachedUser();
-  }
-}

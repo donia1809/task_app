@@ -8,6 +8,13 @@ TextStyle font24weight800ColorBlue = TextStyle(
   color: AppColors.primaryColor,
 );
 
+TextStyle font18weight800ColorBlack = TextStyle(
+  fontFamily: 'Avenir Heavy',
+  fontSize: 18,
+  fontWeight: FontWeight.w800,
+  color: AppColors.black,
+);
+
 TextStyle font18weight500ColorGrey = TextStyle(
   fontFamily: 'Avenir Black',
   fontSize: 18,
@@ -41,4 +48,11 @@ TextStyle font14weight800ColorBlue = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w800,
   color: AppColors.primaryColor,
+);
+
+TextStyle font12weight400ColorGrey = TextStyle(
+fontFamily: 'Avenir Light',
+fontSize: 12,
+fontWeight: FontWeight.w400,
+color: AppColors.primaryColor,
 );

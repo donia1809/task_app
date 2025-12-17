@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_app/core/theme/colors.dart';
 import 'package:task_app/feature/auth/presentation/pages/otp_page.dart';
-import 'package:task_app/feature/home_screen.dart';
+import 'package:task_app/feature/screens/pages/home.dart';
 import '../../../../core/common_widget/auth_button.dart';
 import '../../../../core/common_widget/auth_text_field.dart';
 import '../../../../core/theme/text_style.dart';

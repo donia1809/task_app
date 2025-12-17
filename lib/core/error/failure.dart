@@ -31,3 +31,13 @@ class ValidationFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+class AdvertisementFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
+
+class UnexpectedFailure extends Failure {
+  @override
+  List<Object?> get props => [];
+}
