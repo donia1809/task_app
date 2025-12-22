@@ -4,7 +4,7 @@ import 'package:task_app/core/theme/colors.dart';
 import '../../../../core/common_widget/auth_button.dart';
 import '../../../../core/common_widget/auth_text_field.dart';
 import '../../../../core/theme/text_style.dart';
-import '../bloc/otp_bloc.dart';
+import '../blocs/otp/otp_bloc.dart';
 
 
 class OtpContainer extends StatelessWidget {

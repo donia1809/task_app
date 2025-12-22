@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/strings/strings_failures.dart';
-import '../../domain/entities/otp_entity.dart';
-import '../../domain/use_cases/verify_otp_use_case.dart';
+import '../../../../../../core/strings/strings_failures.dart';
+import '../../../domain/entities/otp_entity.dart';
+import '../../../domain/use_cases/verify_otp_use_case.dart';
 
 part 'otp_event.dart';
 part 'otp_state.dart';

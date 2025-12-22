@@ -19,11 +19,14 @@ class OtpRepoImpl implements OtpRepo {
   });
 
   @override
-  Future<Either<Failure, OtpEntity>> verifyOtp(String otp, String accessToken) async {
+  Future<Either<Failure, OtpEntity>> verifyOtp(
+    String otp,
+    String accessToken,
+  ) async {
     if (await networkInfo.isConnected) {
       try {
         final result = await otpRemoteDataSource.verifyOtp(otp, accessToken);
-        await otpLocalDataSource.cacheOtp(otp, accessToken);
+        await otpLocalDataSource.cacheAccessToken(accessToken);
         return Right(result);
       } on UnAuthorizedException {
         return Left(UnAuthorizedFailure());
@@ -40,8 +43,26 @@ class OtpRepoImpl implements OtpRepo {
   }
 
   @override
-  Future<void> clearOtp() async{
-    await otpLocalDataSource.clearOtp();
+  Future<void> clearAccessToken() async {
+    await otpLocalDataSource.clearAccessToken();
   }
 
+  @override
+  Future<void> cacheAccessToken(String accessToken) async {
+    try {
+      await otpLocalDataSource.cacheAccessToken(accessToken);
+    } catch (e) {
+      throw EmptyCacheException();
+    }
+  }
+  
+  @override
+  Future<Either<Failure, String>> getCachedAccessToken() async{
+    try {
+      final token = await otpLocalDataSource.getCachedAccessToken();
+      return Right(token);
+    } on EmptyCacheException {
+      return Left(EmptyCacheFailure());
+    }
+  }
 }

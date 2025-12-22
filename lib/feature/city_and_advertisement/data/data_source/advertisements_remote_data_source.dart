@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:task_app/core/network/api_constants.dart';
 import 'package:task_app/core/network/api_headers.dart';
@@ -29,7 +30,7 @@ class AdvertisementRemoteDataSourceImpl implements AdvertisementRemoteDataSource
     final uri = Uri.parse('${ApiConstants.baseUrl}/client-api/v1/advertisements')
         .replace(queryParameters: queryParameters);
 
-    final response = await client.get(uri, headers: defaultHeaders());
+    final   response = await client.get(uri, headers: defaultHeaders());
 
 
     final jsonMap = ResponseHandler.handleResponse(response);
@@ -37,7 +38,7 @@ class AdvertisementRemoteDataSourceImpl implements AdvertisementRemoteDataSource
     final List adsList = jsonMap['data']; 
 
     return adsList
-        .map((e) => AdvertisementModel.fromJson(e))
-        .toList();
+        .map((e) => AdvertisementModel.fromJson(e)).toList()
+        ;
   }
 }

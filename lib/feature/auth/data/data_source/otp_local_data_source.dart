@@ -1,48 +1,36 @@
-import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../core/error/exceptions.dart';
 
-abstract class OtpLocalDataSource
-{
-  Future<Map<String, String>> getCachedOtp();
-  Future<void>cacheOtp(String otp,String accessToken);
-  Future<void>clearOtp();
+abstract class OtpLocalDataSource {
+  Future<String> getCachedAccessToken();
+  Future<void> cacheAccessToken(String accessToken);
+  Future<void> clearAccessToken();
 }
-const CACHED_OTP = "CACHED_OTP";
 
-class OtpLocalDataSourceImpl implements OtpLocalDataSource
-{
+const CACHED_ACCESS_TOKEN = "CACHED_ACCESS_TOKEN";
+
+class OtpLocalDataSourceImpl implements OtpLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   OtpLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
-  Future<Map<String, String>> getCachedOtp() async {
-    final jsonString = sharedPreferences.getString(CACHED_OTP);
-    if(jsonString != null) {
-      final data = json.decode(jsonString) as Map<String, dynamic>;
-      return {
-        "otp": data["otp"],
-        "accessToken": data["accessToken"],
-      };
-    }
-    else {
+  Future<String> getCachedAccessToken() async {
+    final token = sharedPreferences.getString(CACHED_ACCESS_TOKEN);
+    if (token != null) {
+      return token;
+    } else {
       throw EmptyCacheException();
     }
   }
 
   @override
-  Future<void> cacheOtp(String otp, String accessToken)async {
-    final data = json.encode({
-      "otp": otp,
-      "accessToken": accessToken,
-    });
-    await sharedPreferences.setString(CACHED_OTP, data);
+  Future<void> cacheAccessToken(String accessToken) async {
+    await sharedPreferences.setString(CACHED_ACCESS_TOKEN, accessToken);
   }
 
   @override
-  Future<void> clearOtp() async{
-    await sharedPreferences.remove(CACHED_OTP);
-
+  Future<void> clearAccessToken() async {
+    await sharedPreferences.remove(CACHED_ACCESS_TOKEN);
   }
 }

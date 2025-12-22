@@ -19,12 +19,13 @@ class AdvertisementWidget extends StatelessWidget {
           return Center(
             child: Text(
               state.message,
-              style:  font16weight500ColorBlack.copyWith(color: AppColors.red),
+              style: font16weight500ColorBlack.copyWith(color: AppColors.red),
             ),
           );
         }
         if (state is AdvertisementLoaded) {
           return ListView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 8),
             scrollDirection: Axis.vertical,
             itemCount: state.advertisements.length,
             itemBuilder: (context, index) {

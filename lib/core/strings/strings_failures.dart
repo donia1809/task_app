@@ -9,7 +9,6 @@ const String ADVERTISEMENT_FAILOUR_MESSAGE = 'No advertisements found';
 const String VALIDATION_FAILOUR_MESSAGE = 'Validation error, please check your input';
 const String UNEXPECTED_FAILOUR_MESSAGE = 'Something went wrong';
 
-
 String mapFailureMessage(Failure failure) {
   switch (failure.runtimeType) {
     case ServerFailure:

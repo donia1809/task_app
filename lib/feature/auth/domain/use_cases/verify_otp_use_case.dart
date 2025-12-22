@@ -12,4 +12,5 @@ class VerifyOtpUseCase{
   {
     return await otpRepo.verifyOtp(otp, accessToken);
   }
+  
 }
